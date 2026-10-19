@@ -1,0 +1,44 @@
+plugins {
+    id 'java-library'
+    id 'com.vanniktech.maven.publish'
+}
+
+mavenPublishing {
+    coordinates("dev.ffmpegkit-maintained", "youtubedl", VERSION)
+
+    signAllPublications()
+    publishToMavenCentral()
+
+    pom {
+        name = "youtubedl for Android — yt-dlp"
+        description = "Maven Central search alias → dev.ffmpegkit-maintained:yt-dlp-android. Searching for 'youtubedl' on Maven Central? 1000+ sites, clean Java/Kotlin API, yt-dlp embedded via Python 3.13. Pro tier adds curl-cffi for TLS impersonation (Instagram, TikTok, YouTube)."
+        inceptionYear = "2026"
+        url = "https://github.com/liuyouwu1999/linkdown-ytdlp-android"
+
+        licenses {
+            license {
+                name = "MIT License"
+                url = "https://github.com/liuyouwu1999/linkdown-ytdlp-android/blob/master/LICENSE"
+                distribution = "repo"
+            }
+        }
+
+        developers {
+            developer {
+                id = "linkdown"
+                name = "linkdown"
+                email = "linkdown@users.noreply.github.com"
+            }
+        }
+
+        scm {
+            url = "https://github.com/liuyouwu1999/linkdown-ytdlp-android"
+            connection = "scm:git:git://github.com/liuyouwu1999/linkdown-ytdlp-android.git"
+            developerConnection = "scm:git:ssh://git@github.com/liuyouwu1999/linkdown-ytdlp-android.git"
+        }
+    }
+}
+
+dependencies {
+    api("dev.ffmpegkit-maintained:yt-dlp-android:${VERSION}")
+}
