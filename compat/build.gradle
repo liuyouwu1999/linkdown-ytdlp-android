@@ -1,0 +1,68 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.vanniktech.maven.publish'
+}
+
+android {
+    namespace 'dev.ffmpegkit_maintained.ytdlp.compat'
+    compileSdk 35
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 35
+    }
+
+    buildTypes {
+        release { minifyEnabled false }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+}
+
+mavenPublishing {
+    coordinates("dev.ffmpegkit-maintained", "yt-dlp-android-compat", VERSION)
+
+    signAllPublications()
+    publishToMavenCentral()
+
+    pom {
+        name = "yt-dlp-android-compat"
+        description = "Optional migration shim for yt-dlp-android. Provides Kotlin typealiases (YoutubeDL, YoutubeDLRequest, …) in the dev.ffmpegkit_maintained.ytdlp.compat namespace — lets apps previously using yausername/youtubedl-android compile without code changes after swapping the dependency."
+        inceptionYear = "2026"
+        url = "https://github.com/liuyouwu1999/linkdown-ytdlp-android"
+
+        licenses {
+            license {
+                name = "MIT License"
+                url = "https://github.com/liuyouwu1999/linkdown-ytdlp-android/blob/master/LICENSE"
+                distribution = "repo"
+            }
+        }
+
+        developers {
+            developer {
+                id = "linkdown"
+                name = "linkdown"
+                email = "linkdown@users.noreply.github.com"
+            }
+        }
+
+        scm {
+            url = "https://github.com/liuyouwu1999/linkdown-ytdlp-android"
+            connection = "scm:git:git://github.com/liuyouwu1999/linkdown-ytdlp-android.git"
+            developerConnection = "scm:git:ssh://git@github.com/liuyouwu1999/linkdown-ytdlp-android.git"
+        }
+    }
+}
+
+dependencies {
+    api("dev.ffmpegkit-maintained:yt-dlp-android:${VERSION}")
+}
