@@ -6,7 +6,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'     version '2.0.21' apply false
 }
 
-// Délègue la commande par défaut de JitPack au sous-module library.
+// Delegate the default JitPack command to the library sub-module.
 tasks.register('publishToMavenLocal') {
     dependsOn ':library:publishToMavenLocal'
 }
